@@ -154,13 +154,20 @@ class PluginModel(GlancesPluginModel):
 
 
     def msg_curse(self, args=None, max_width=None):
+
+        print("PRINTING SOMETHING")
+        
         """Return the dict to display in the curse interface."""
         # Init the return message
         ret = []
 
+
         # Only process if stats exist and display plugin enable...
         if not self.stats or self.is_disabled():
+            print("empty input")
             return ret
+        
+        print("there is input")
 
         # Max size for the interface name
         if max_width:
@@ -237,6 +244,8 @@ class PluginModel(GlancesPluginModel):
             msg = f'{rxps:>7}'
             ret.append(self.curse_add_line(msg, write_decoration))
 
+        # Inside msg_curse(), after processing the stats
+        print("Final result list:", ret)  # Check the list just before returning it
         return ret
 
 
